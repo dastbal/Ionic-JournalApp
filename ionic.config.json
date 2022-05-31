@@ -1,0 +1,7 @@
+{
+  "name": "journal-MobileApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
