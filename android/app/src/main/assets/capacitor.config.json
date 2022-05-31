@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "journal-MobileApp",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
