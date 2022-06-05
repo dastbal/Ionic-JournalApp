@@ -1,0 +1,53 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <h2 class="ion-text-center">Journal</h2>
+  <form action="" (ngSubmit)="login()" [formGroup]="loginForm">
+    <ion-item>
+      <ion-label> </ion-label>
+      <ion-input placeholder="Email" type="email" formControlName="email">
+      </ion-input>
+    </ion-item>
+    <ng-container
+      *ngIf=" loginForm.get('email').errors?.['required'] &&
+  loginForm.get('email').dirty"
+    >
+      That field is required
+    </ng-container>
+
+    <ion-item>
+      <ion-label> </ion-label>
+      <ion-input
+        placeholder="Password"
+        type="password"
+        formControlName="password"
+      >
+      </ion-input>
+    </ion-item>
+    <ng-container
+      *ngIf=" loginForm.get('email').errors?.['required'] &&
+  loginForm.get('email').dirty"
+    >
+      That field is required
+    </ng-container>
+    <ion-button
+      [disabled]="loginForm.invalid"
+      type="submit"
+      expand="block"
+      shape="round"
+    >
+      Log In
+    </ion-button>
+  </form>
+
+  <ng-container *ngIf="errorMsg"> {{errorMsg}}</ng-container>
+</ion-content>
+<ion-footer>
+  <p class="ion-text-center" routerLink="/register" type="submit">
+    You don't have an Account ?
+  </p>
+</ion-footer>

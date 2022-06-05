@@ -1,0 +1,23 @@
+<ion-content>
+  <ng-container *ngIf="journals">
+    <div class="ion-text-center">Go to record your great day!</div>
+  </ng-container>
+
+  <div class="journalContainer" *ngFor="let journal of journals">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{journal.title}}</ion-card-title>
+      </ion-card-header>
+      <div>
+        <p class="ion-text-start">{{journal.content}}</p>
+      </div>
+    </ion-card>
+    <ion-buttons>
+      <a class="edit" routerLink="/tabs/edit" [state]="journal"> Edit </a>
+      <ion-button color="danger" (click)="deleteJournal(journal.id)">
+        Delete
+      </ion-button>
+    </ion-buttons>
+    <hr />
+  </div>
+</ion-content>

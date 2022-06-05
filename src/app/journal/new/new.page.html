@@ -1,0 +1,34 @@
+<ion-content>
+  <div class="container">
+    <form [formGroup]="journalForm" (ngSubmit)="createNewJournal()">
+      <ion-item>
+        <ion-label>Title</ion-label>
+        <ion-input type="text" formControlName="title"></ion-input>
+        <ng-container
+          *ngIf=" journalForm.get('title')?.touched && journalForm.get('title')?.errors?.['required']"
+        >
+          <div class="danger alert-danger">This field is required</div>
+        </ng-container>
+        <ng-container
+          *ngIf="journalForm.get('title')?.errors?.['minlength']  && journalForm.get('title')?.touched "
+        >
+          <div class="danger alert-danger">Too Short</div>
+        </ng-container>
+      </ion-item>
+      <ion-item>
+        <ion-label>Content</ion-label>
+        <ion-textarea type="text" formControlName="content"></ion-textarea>
+      </ion-item>
+
+      <ion-button
+        (click)=" presentToast()"
+        [disabled]="journalForm.invalid"
+        type="submit"
+        expand="block"
+        shape="round"
+      >
+        Save
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

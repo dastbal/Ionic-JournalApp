@@ -4,33 +4,36 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        path: 'new',
+        loadChildren: () =>
+          import('../journal/new/new.module').then((m) => m.NewPageModule),
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        path: 'edit',
+        loadChildren: () =>
+          import('../journal/edit/edit.module').then((m) => m.EditPageModule),
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        path: 'feed',
+        loadChildren: () =>
+          import('../journal/feed/feed.module').then((m) => m.FeedPageModule),
       },
       {
-        path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full'
-      }
-    ]
+        path: 'profile',
+        loadChildren: () =>
+          import('../profile/profile.module').then((m) => m.ProfilePageModule),
+      },
+    ],
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
-  }
+    redirectTo: '/tabs/feed',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
