@@ -21,4 +21,4 @@ This is a journal
 
 * Add firebase
 * Add more ways to save journal data
-* Add filter to obtaind data
+* Add filter to obtain the data
