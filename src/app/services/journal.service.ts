@@ -6,17 +6,25 @@ import { StoreJournalsService } from './store-journals.service';
 })
 export class JournalService {
   constructor(private storeJournalsService: StoreJournalsService) {}
-  async newJournal(data) {
-    await this.storeJournalsService.createNewJournal(data);
+  newJournal(userid, data) {
+    const payload = { userid, ...data };
+    // console.log(payload);
+    this.storeJournalsService
+      .createNewJournal(payload)
+      .subscribe((res) => console.log('created'));
   }
-  async getJournals() {
-    return await this.storeJournalsService.getJournals();
+  async getJournals(userid) {
+    return this.storeJournalsService.getJournals(userid);
   }
 
-  async deleteJournal(id) {
-    await this.storeJournalsService.deleteJournal(id);
+  deleteJournal(id) {
+    this.storeJournalsService
+      .deleteJournal(id)
+      .subscribe((res) => console.log('deleted', res));
   }
-  async editJournal(id, editedJournal) {
-    await this.storeJournalsService.editJournal(id, editedJournal);
+  editJournal(id, editedJournal) {
+    this.storeJournalsService
+      .editJournal(id, editedJournal)
+      .subscribe((res) => console.log('updated'));
   }
 }

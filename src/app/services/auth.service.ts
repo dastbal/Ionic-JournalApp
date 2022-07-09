@@ -18,7 +18,7 @@ export class AuthService {
           user.email === credential.email &&
           user.password === credential.password
       );
-      console.log(userLogged);
+      console.log('user Logged', userLogged);
       console.log(userLogged.length);
 
       if (userLogged.length === 0) {

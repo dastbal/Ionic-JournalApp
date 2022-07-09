@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { JournalService } from 'src/app/services/journal.service';
 
 @Component({
@@ -10,14 +11,25 @@ import { JournalService } from 'src/app/services/journal.service';
 export class FeedPage {
   journals;
 
-  constructor(private js: JournalService, private router: Router) {}
+  constructor(
+    private js: JournalService,
+    private router: Router,
+    private authSAervice: AuthService
+  ) {}
 
   async ionViewDidEnter() {
-    this.journals = await this.js.getJournals();
+    const userLogged = await this.authSAervice.getUser();
+
+    const jns = await this.js.getJournals(userLogged.id);
+    jns.subscribe((jn) => {
+      console.log(jn);
+      this.journals = jn;
+    });
   }
 
-  async deleteJournal(id) {
-    await this.js.deleteJournal(id);
+  deleteJournal(id) {
+    // conso
+    this.js.deleteJournal(id);
     window.location.reload();
 
     console.log(id);
